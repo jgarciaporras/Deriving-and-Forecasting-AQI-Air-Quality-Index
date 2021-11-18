@@ -1,1 +1,1 @@
-# Deriving-and-Forecasting-AQI-Air-Quality-Index-
+# Deriving and Forecasting AQI Air Quality Index
