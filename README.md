@@ -1,24 +1,23 @@
 # Deriving and Forecasting AQI (Air Quality Index)
 
-<h3 style="text-align:center"><b>Problem Statement</b></h3>
+## Problem Statement
 Exposure to high levels of air pollution can cause a variety of adverse health outcomes. Studies show that people from India are losing 5.2 years of life expectancy. That is why a unit must be introduced which can help identify key indicators in air pollution. AQI is one such unit which measures the concentration of pollutants in the air. It gives an estimate of the Air Quality in a country.
 
 
-## <h3 style="text-align:center"><b>Aim</b></h3>
+## Aim
 1. The aim of our project is to derive the Air Quality Index (AQI) and show the correlation between AQI and the different independent features with the help of different Machine Learning Algorithms.
 2. Predict the AQI class category based on the features captured by sensors. 
 3. Understanding the AQI along with identifying its key indicator can enable governments to take steps to mitigate this problem.
 
-Data
+## Data
 
 We got our data from the UCI machine learning repository. The dataset has 9471 instances and 17 features.  It contains the concentration or volume of various pollutants such as CO, C6H6, NO, NO2 found in the air in Italy. These readings were recorded using different sensors. Apart from this the features also included the temperature, humidity along with the date and time at which they were recorded.
 
 ![data](https://user-images.githubusercontent.com/44596318/142511717-b231b379-8c3a-45e0-8ab8-24898e612aa6.jpg)
 
-
 Source: https://archive.ics.uci.edu/ml/datasets/Air+quality
 
-Data Preprocessing
+## Data Preprocessing
 
  We start By Importing different libraries and reading the dataset. 
  
@@ -50,7 +49,7 @@ Here is the final output after dropping down the columns, replacing errors with 
  
 
                                                      
-                                                        Feature Selection and Engineering
+## Feature Selection and Engineering
 
 Here, we are creating a new attribute named as AQI which we will calculate through these 5 attributes like CO, NMHC, C6H6, Nox and No2  
  
@@ -71,7 +70,7 @@ Then we display top 5 observations of our dataset
 
 ![Picture11](https://user-images.githubusercontent.com/44596318/142511731-dbad003f-485e-4ffa-ab57-6505d8e1d6c9.jpg)
 
-Data Imbalance
+## Data Imbalance
 
 ![Picture12](https://user-images.githubusercontent.com/44596318/142511732-892e436f-f840-45dd-abad-032f50270365.jpg)
  
@@ -89,7 +88,7 @@ So after fitting another RandomForest classifier with a stratified train test sp
 
 However, there was still room for improvement.
 
-Pipeline
+## Pipeline
 
 ![Picture15](https://user-images.githubusercontent.com/44596318/142511737-37af0ea4-fe8f-4948-a673-b462e06491a5.jpg) 
 
@@ -103,20 +102,16 @@ Steps that we need to do:
 1.	Importing the libraries needed:
 
 ![Picture16](https://user-images.githubusercontent.com/44596318/142511738-9030d710-e18a-4694-bab2-52745545ebb6.jpg)
-Image 2: Libraries needed
 
 2.	Creating our models and pipeline: To determine that our Random Forest Classifier is the best model, we create Logistic Regression, Support Vector Machine, Random Forest Classifier with different parameters, K-Nearest-Neighbor and Ada Booster (Image 3)
  
 ![Picture17](https://user-images.githubusercontent.com/44596318/142511739-63a8b08f-30c3-44a2-b2dc-3ca553c2225f.jpg)
-Image 3: Libraries needed
 
 3.	Furthermore, we create a Repeat Stratified K Fold which help us to improve the performance of the estimation. This part of the code will be used on the GridSearchCV.
 
 ![Picture18](https://user-images.githubusercontent.com/44596318/142511740-f8bd6716-4e32-485a-944e-a5e1009edceb.jpg)  
-Image 4: Creating Repeat Stratified K Fold
 
-
-Model Selection and Hyperparameter tuning using GridSearchCV
+## Model Selection and Hyperparameter tuning using GridSearchCV
  
 Questions?
 •	Is our Random Forest Classifier the best model for our datasets?
@@ -141,7 +136,7 @@ The results show
 
 ![Picture21](https://user-images.githubusercontent.com/44596318/142511743-19fe2c98-8d79-4716-b22a-e4bfe03a34e3.jpg)
 
-Model Evaluation
+## Model Evaluation
 
 After running our Grid Search and creating hyperparameters, we can compare the Matrix Confusion from our first Random Forest Classifier(Image 5)   and the best Random Forest Classifier(Image 6) . This allows us to see how improve the accuracy.
  
@@ -157,14 +152,13 @@ On evaluating the final model we found that the f1-score of classes like “Haza
 
 ![Picture23](https://user-images.githubusercontent.com/44596318/142511711-1a8f4e59-3651-483f-96c4-54b5a0a4aea4.jpg)
  
-Correlation Heatmap
+## Correlation Heatmap
 
- 
+![correlation](https://user-images.githubusercontent.com/44596318/142552508-4f7ced6f-5463-4ecc-8a10-0f06ab3568ec.jpg) 
 
 To understand the key indicators in predicting the AQI we plotted a Pearson correlation heatmap. Features/ pollutants such as CO, NO, and NO2 have a strong correlation with AQI.
 
-
-Conclusion
+## Conclusion
 
 To conclude, we derived the Air Quality Index (AQI) from the concentration of pollutants by averaging the hourly volume of pollutants in the air and binning them into respective categories. Solved data imbalance by oversampling using SMOTE. The final RandomForest model after oversampling and hyperparameter tuning gave an accuracy of 0.9833 with consistent f1-scores for each label. 
 Key indicators which contribute towards AQI are CO, NO, and NO2. Governments can use these key indicators to help understand the source of the problem and take steps towards mitigating air pollution.
