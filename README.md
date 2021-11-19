@@ -4,11 +4,10 @@
 Exposure to high levels of air pollution can cause a variety of adverse health outcomes. Studies show that people from India are losing 5.2 years of life expectancy. That is why a unit must be introduced which can help identify key indicators in air pollution. AQI is one such unit which measures the concentration of pollutants in the air. It gives an estimate of the Air Quality in a country.
 
 
-<h3 style="text-align:center"><b>Aim</b></h3>
+## <h3 style="text-align:center"><b>Aim</b></h3>
 1. The aim of our project is to derive the Air Quality Index (AQI) and show the correlation between AQI and the different independent features with the help of different Machine Learning Algorithms.
 2. Predict the AQI class category based on the features captured by sensors. 
 3. Understanding the AQI along with identifying its key indicator can enable governments to take steps to mitigate this problem.
-4. 
 
 Data
 
@@ -70,38 +69,29 @@ Based on the AQI scores, we are making a new attribute namely AQI Category.
  
 Then we display top 5 observations of our dataset
 
-![Picture23](https://user-images.githubusercontent.com/44596318/142511711-1a8f4e59-3651-483f-96c4-54b5a0a4aea4.jpg)
-![best_model](https://user-images.githubusercontent.com/44596318/142511713-f679962f-b0a3-41ec-9432-6498e9e3c12c.png)
-![best_model_plot](https://user-images.githubusercontent.com/44596318/142511714-735db16c-ff98-462b-85b6-9217998b2f9f.png)
-![confusion_matrix](https://user-images.githubusercontent.com/44596318/142511716-a148dffb-88f1-4e66-9d4a-e30601c62a1b.jpg)
 ![Picture11](https://user-images.githubusercontent.com/44596318/142511731-dbad003f-485e-4ffa-ab57-6505d8e1d6c9.jpg)
-![Picture12](https://user-images.githubusercontent.com/44596318/142511732-892e436f-f840-45dd-abad-032f50270365.jpg)
-![Picture13](https://user-images.githubusercontent.com/44596318/142511735-6e738687-4b2f-40b1-8c04-0851433c1678.jpg)
-![Picture14](https://user-images.githubusercontent.com/44596318/142511736-262024d6-7f84-427c-8f61-cd984421056f.jpg)
-![Picture15](https://user-images.githubusercontent.com/44596318/142511737-37af0ea4-fe8f-4948-a673-b462e06491a5.jpg)
-![Picture16](https://user-images.githubusercontent.com/44596318/142511738-9030d710-e18a-4694-bab2-52745545ebb6.jpg)
-![Picture17](https://user-images.githubusercontent.com/44596318/142511739-63a8b08f-30c3-44a2-b2dc-3ca553c2225f.jpg)
-![Picture18](https://user-images.githubusercontent.com/44596318/142511740-f8bd6716-4e32-485a-944e-a5e1009edceb.jpg)
-![Picture19](https://user-images.githubusercontent.com/44596318/142511741-c63425a0-7e1a-4589-9639-ef1571ec0908.jpg)
-![Picture20](https://user-images.githubusercontent.com/44596318/142511742-d6eb733f-9faa-474b-ba86-aba79623d098.jpg)
-![Picture21](https://user-images.githubusercontent.com/44596318/142511743-19fe2c98-8d79-4716-b22a-e4bfe03a34e3.jpg)
-![Picture22](https://user-images.githubusercontent.com/44596318/142511744-05e6c89a-3b05-4219-a4d6-0a7179b4f09d.jpg)
 
 Data Imbalance
 
+![Picture12](https://user-images.githubusercontent.com/44596318/142511732-892e436f-f840-45dd-abad-032f50270365.jpg)
  
 After binning and deriving the class labels from the features we found that the there was severe imbalance in the data. The bulk of the data i.e close to 78% belonged to either “Unhealthy for sensitive groups” and “Moderate”. The last three classes had only around 500 instances which would make it strenuous for the model to effectively learn these classes.
 
 Upon fitting a RandomForestClassifier to get a rough baseline we found that the model had an accuracy of 91%. But on checking the classification report we noticed that “Hazardous” had a f1-score of 0 and likewise classes like “Unhealthy” and “Very unhealthy” too had comparatively low scores.
-  
+
+![Picture13](https://user-images.githubusercontent.com/44596318/142511735-6e738687-4b2f-40b1-8c04-0851433c1678.jpg)  
 
 To tackle this, we explored an oversampling technique called SMOTE (Synthetic Minority Oversampling Technique). This takes the minority classes and creates artificial rows which are similar to the original values and brings them on level with the majority class.
- 
+
+![Picture14](https://user-images.githubusercontent.com/44596318/142511736-262024d6-7f84-427c-8f61-cd984421056f.jpg)
+
 So after fitting another RandomForest classifier with a stratified train test split we found that the f1-scores or the labels had improved drastically.
 
 However, there was still room for improvement.
 
 Pipeline
+
+![Picture15](https://user-images.githubusercontent.com/44596318/142511737-37af0ea4-fe8f-4948-a673-b462e06491a5.jpg) 
 
 After running our model with RandomForestClassifier, we obtained the results above (Image 1): 
  
@@ -112,16 +102,17 @@ The purpose of the pipeline is to assemble several steps that can be cross valid
 Steps that we need to do:
 1.	Importing the libraries needed:
 
- 
+![Picture16](https://user-images.githubusercontent.com/44596318/142511738-9030d710-e18a-4694-bab2-52745545ebb6.jpg)
 Image 2: Libraries needed
 
 2.	Creating our models and pipeline: To determine that our Random Forest Classifier is the best model, we create Logistic Regression, Support Vector Machine, Random Forest Classifier with different parameters, K-Nearest-Neighbor and Ada Booster (Image 3)
  
+![Picture17](https://user-images.githubusercontent.com/44596318/142511739-63a8b08f-30c3-44a2-b2dc-3ca553c2225f.jpg)
 Image 3: Libraries needed
 
-
 3.	Furthermore, we create a Repeat Stratified K Fold which help us to improve the performance of the estimation. This part of the code will be used on the GridSearchCV.
- 
+
+![Picture18](https://user-images.githubusercontent.com/44596318/142511740-f8bd6716-4e32-485a-944e-a5e1009edceb.jpg)  
 Image 4: Creating Repeat Stratified K Fold
 
 
@@ -133,27 +124,22 @@ Questions?
 
 We wanted to figure out which one gives us the best performance for our dataset.  In order to get answers for these question, we decided to use GridSearchCV as below.
 GridSearchCV for finding the best optimal combination of hyperparameters for other models: 
- 
+
+![Picture19](https://user-images.githubusercontent.com/44596318/142511741-c63425a0-7e1a-4589-9639-ef1571ec0908.jpg)
 
 Our GridSearchCV applies a ‘fit’ and a ‘score’ method as well as a ‘predict’ using the scaled train data and defined models in the pipelines. I used a simple “for” loop with GridSearchCV which tries each of the classifiers one by one with the corresponding parameter grid specified in the dictionary. Also, to check if the model is overfitting, we added predict with test data too.  
 
- 
-
-
-
+![Picture20](https://user-images.githubusercontent.com/44596318/142511742-d6eb733f-9faa-474b-ba86-aba79623d098.jpg)
 
 The results show 
 
 •	Our Random Forest Classifier model takes 2nd place with the hyperparameter ( n_estimators=200,  max_depth = 8 ). It gave us 0.982894 Test score.
 •	The best model is SVC (C = 20) with 0.996551 score Test score. 
 
- 
 
+![best_model_plot](https://user-images.githubusercontent.com/44596318/142511714-735db16c-ff98-462b-85b6-9217998b2f9f.png)
 
-  
-
-
-
+![Picture21](https://user-images.githubusercontent.com/44596318/142511743-19fe2c98-8d79-4716-b22a-e4bfe03a34e3.jpg)
 
 Model Evaluation
 
@@ -161,16 +147,15 @@ After running our Grid Search and creating hyperparameters, we can compare the M
  
 Image 5: Confusion Matrix – 1st Random Forest Classifier
 
-			
-
+![Picture22](https://user-images.githubusercontent.com/44596318/142511744-05e6c89a-3b05-4219-a4d6-0a7179b4f09d.jpg) 
  
 Image 6: Confusion Matrix – Best Random Forest Classifier
 
+![confusion_matrix](https://user-images.githubusercontent.com/44596318/142511716-a148dffb-88f1-4e66-9d4a-e30601c62a1b.jpg)
 
-On evaluating the final model we found that the f1-score of classes like “Hazardous”, “Unhealthy” and “Very Unhealthy” have improved drastically. Along with this there was a big improvement in the overall accuracy and f1-score after hyperparameter tuning.
- 
+On evaluating the final model we found that the f1-score of classes like “Hazardous”, “Unhealthy” and “Very Unhealthy” have improved drastically. Along with this there was a big improvement in the overall accuracy and f1-score after hyperparameter tuning. 
 
-
+![Picture23](https://user-images.githubusercontent.com/44596318/142511711-1a8f4e59-3651-483f-96c4-54b5a0a4aea4.jpg)
  
 Correlation Heatmap
 
