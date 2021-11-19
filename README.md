@@ -1,4 +1,4 @@
-# Deriving and Forecasting AQI Air Quality Index
+# Deriving and Forecasting AQI (Air Quality Index)
 
 <h3 style="text-align:center"><b>Problem Statement</b></h3>
 Exposure to high levels of air pollution can cause a variety of adverse health outcomes. Studies show that people from India are losing 5.2 years of life expectancy. That is why a unit must be introduced which can help identify key indicators in air pollution. AQI is one such unit which measures the concentration of pollutants in the air. It gives an estimate of the Air Quality in a country.
@@ -13,7 +13,9 @@ Exposure to high levels of air pollution can cause a variety of adverse health o
 Data
 
 We got our data from the UCI machine learning repository. The dataset has 9471 instances and 17 features.  It contains the concentration or volume of various pollutants such as CO, C6H6, NO, NO2 found in the air in Italy. These readings were recorded using different sensors. Apart from this the features also included the temperature, humidity along with the date and time at which they were recorded.
- 
+
+![data](https://user-images.githubusercontent.com/44596318/142511717-b231b379-8c3a-45e0-8ab8-24898e612aa6.jpg)
+
 
 Source: https://archive.ics.uci.edu/ml/datasets/Air+quality
 
@@ -22,7 +24,8 @@ Data Preprocessing
  We start By Importing different libraries and reading the dataset. 
  
 After reading the dataset and displaying top 20 observations, we found the following issues -
- 
+
+![Picture2](https://user-images.githubusercontent.com/44596318/142511719-d1f4bb99-cebb-4a6c-b1c4-3a21bd5cdc13.jpg) 
 
  Solutions - 
 •	To begin, we first dropped columns that were not contributing to the prediction (eg: Date, Time). 
@@ -31,32 +34,58 @@ After reading the dataset and displaying top 20 observations, we found the follo
 •	Used a SimpleImputer with mean to impute the nan values.
 •	Finally,  changed the data type to float
 
- 
+![Picture3](https://user-images.githubusercontent.com/44596318/142511720-55440b6c-0961-49f1-b55d-01fcde4bc9bd.jpg) 
 
 In the below image, we can see that –200 value is being replaced with nan  values.
- 
+
+![Picture4](https://user-images.githubusercontent.com/44596318/142511722-dd3e6ff1-2059-448e-8d7f-51a55e16d52f.jpg) 
 
 Now we can Impute the Nan values with 
+
+![Picture5](https://user-images.githubusercontent.com/44596318/142511723-b34dd1dd-7ad5-4c87-aab7-1b484b922246.jpg)
  
 
-Here is the final output after dropping down the columns, replacing errors with Nan value and then imputing those values. Here only 5 attributes remains after performing all those operations.
+Here is the final output after dropping down the columns, replacing errors with Nan value and then imputing those values. Here only 5 attributes remain after performing all those operations.
+
+![Picture6](https://user-images.githubusercontent.com/44596318/142511724-552d0ac4-84ad-499a-b0a7-8476bc66704f.jpg)
  
 
                                                      
                                                         Feature Selection and Engineering
 
-Here, we are creating a new attribute named as AQI which we will calculate through these 5 attributes like CO, NMHC, C6H6, Nox and No2 
+Here, we are creating a new attribute named as AQI which we will calculate through these 5 attributes like CO, NMHC, C6H6, Nox and No2  
  
- 
- 
+![Picture7](https://user-images.githubusercontent.com/44596318/142511725-15ee58f5-6999-434b-b7d6-1d38a5ae3a5f.jpg)
+
+![Picture8](https://user-images.githubusercontent.com/44596318/142511726-e1c33d56-1332-478a-a4fb-fce6462b83c6.jpg) 
 
 Here, we are displaying top 5 samples of our dataset and we can see that a new attribute named AQI is being formed.
- 
+
+![Picture9](https://user-images.githubusercontent.com/44596318/142511728-1a5c3d12-d0c9-4d60-a718-0fa3d6cace6c.jpg) 
 
 Based on the AQI scores, we are making a new attribute namely AQI Category.
+
+
+![Picture10](https://user-images.githubusercontent.com/44596318/142511729-61eb36bc-413c-429f-aed5-cea1326d6fe3.jpg)
  
 Then we display top 5 observations of our dataset
- 
+
+![Picture23](https://user-images.githubusercontent.com/44596318/142511711-1a8f4e59-3651-483f-96c4-54b5a0a4aea4.jpg)
+![best_model](https://user-images.githubusercontent.com/44596318/142511713-f679962f-b0a3-41ec-9432-6498e9e3c12c.png)
+![best_model_plot](https://user-images.githubusercontent.com/44596318/142511714-735db16c-ff98-462b-85b6-9217998b2f9f.png)
+![confusion_matrix](https://user-images.githubusercontent.com/44596318/142511716-a148dffb-88f1-4e66-9d4a-e30601c62a1b.jpg)
+![Picture11](https://user-images.githubusercontent.com/44596318/142511731-dbad003f-485e-4ffa-ab57-6505d8e1d6c9.jpg)
+![Picture12](https://user-images.githubusercontent.com/44596318/142511732-892e436f-f840-45dd-abad-032f50270365.jpg)
+![Picture13](https://user-images.githubusercontent.com/44596318/142511735-6e738687-4b2f-40b1-8c04-0851433c1678.jpg)
+![Picture14](https://user-images.githubusercontent.com/44596318/142511736-262024d6-7f84-427c-8f61-cd984421056f.jpg)
+![Picture15](https://user-images.githubusercontent.com/44596318/142511737-37af0ea4-fe8f-4948-a673-b462e06491a5.jpg)
+![Picture16](https://user-images.githubusercontent.com/44596318/142511738-9030d710-e18a-4694-bab2-52745545ebb6.jpg)
+![Picture17](https://user-images.githubusercontent.com/44596318/142511739-63a8b08f-30c3-44a2-b2dc-3ca553c2225f.jpg)
+![Picture18](https://user-images.githubusercontent.com/44596318/142511740-f8bd6716-4e32-485a-944e-a5e1009edceb.jpg)
+![Picture19](https://user-images.githubusercontent.com/44596318/142511741-c63425a0-7e1a-4589-9639-ef1571ec0908.jpg)
+![Picture20](https://user-images.githubusercontent.com/44596318/142511742-d6eb733f-9faa-474b-ba86-aba79623d098.jpg)
+![Picture21](https://user-images.githubusercontent.com/44596318/142511743-19fe2c98-8d79-4716-b22a-e4bfe03a34e3.jpg)
+![Picture22](https://user-images.githubusercontent.com/44596318/142511744-05e6c89a-3b05-4219-a4d6-0a7179b4f09d.jpg)
 
 Data Imbalance
 
