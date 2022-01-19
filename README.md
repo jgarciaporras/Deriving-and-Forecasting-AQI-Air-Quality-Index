@@ -26,10 +26,15 @@ After reading the dataset and displaying top 20 observations, we found the follo
 ![Picture2](https://user-images.githubusercontent.com/44596318/142511719-d1f4bb99-cebb-4a6c-b1c4-3a21bd5cdc13.jpg) 
 
  Solutions - 
+ 
 •	To begin, we first dropped columns that were not contributing to the prediction (eg: Date, Time). 
+
 •	Replaced "," by "." 
+
 •	Replaced all the missing values (-200 and –200.0) by "nan" instead of dropping
+
 •	Used a SimpleImputer with mean to impute the nan values.
+
 •	Finally,  changed the data type to float
 
 ![Picture3](https://user-images.githubusercontent.com/44596318/142511720-55440b6c-0961-49f1-b55d-01fcde4bc9bd.jpg) 
